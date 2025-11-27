@@ -1,0 +1,37 @@
+{{ define "main" }}
+    <section class="fade-in">
+        <h2>Our <span class="highlight">History</span></h2>
+    </section>
+
+    <section class="fade-in">
+        <ul class="timeline">
+            {{ range .Params.timeline }}
+            <li class="timeline-item">
+                <span class="timeline-title">{{ .title }}</span>
+                <div class="timeline-content">
+                    {{ range .content }}
+                        <p>{{ . | markdownify }}</p>
+                    {{ end }}
+                    {{ if .image }}
+                    <div class="timeline-media">
+                        <img src="{{ .image }}" alt="{{ .title }}" class="timeline-image">
+                    </div>
+                    {{ end }}
+                    {{ if .video }}
+                    <div class="timeline-media">
+                        {{ if hasPrefix .video "https://www.youtube.com/embed/" }}
+                            <div class="timeline-video">
+                                <iframe src="{{ .video }}" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        {{ else }}
+                            <div class="timeline-video" data-youtube-url="{{ .video }}"></div>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+            </li>
+            {{ end }}
+        </ul>
+    </section>
+{{ end }}
+

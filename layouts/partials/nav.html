@@ -1,0 +1,15 @@
+{{ $currentPage := . }}
+{{ range .Site.Menus.main }}
+    {{ $isActive := false }}
+    {{ if eq .Identifier "contact" }}
+        {{ if eq $currentPage.Kind "home" }}
+            {{ $isActive = false }}
+        {{ end }}
+    {{ else }}
+        {{ if eq $currentPage.RelPermalink .URL }}
+            {{ $isActive = true }}
+        {{ end }}
+    {{ end }}
+    <a href="{{ .URL | relURL }}"{{ if $isActive }} class="active"{{ end }}>{{ .Name }}</a>
+{{ end }}
+

@@ -1,0 +1,37 @@
+{{ define "main" }}
+    <section class="fade-in">
+        <h2>Our <span class="highlight">Services</span></h2>
+    </section>
+
+    <section>
+        <div class="tab-switcher fade-in">
+            <button class="tab-button active" data-tab="companies">Companies</button>
+            <button class="tab-button" data-tab="investors">Intermediaries and Investors</button>
+        </div>
+
+        <div class="service-block active" id="companies-tab">
+            <h3 class="service-block-title">Scale your fundraising</h3>
+            <ul class="services">
+                {{ range .Params.services_companies }}
+                <li>
+                    <span class="service-title">{{ .title }}</span>
+                    <span class="service-desc">{{ .description }}</span>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+
+        <div class="service-block" id="investors-tab">
+            <h3 class="service-block-title">Invest with the proper setup</h3>
+            <ul class="services">
+                {{ range .Params.services_investors }}
+                <li>
+                    <span class="service-title">{{ .title }}</span>
+                    <span class="service-desc">{{ .description }}</span>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+    </section>
+{{ end }}
+

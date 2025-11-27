@@ -1,0 +1,118 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {{/* Title */}}
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
+    
+    {{/* Description */}}
+    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    
+    {{/* Keywords */}}
+    {{ if .Keywords }}
+        <meta name="keywords" content="{{ delimit .Keywords ", " }}">
+    {{ else if .Site.Params.keywords }}
+        <meta name="keywords" content="{{ delimit .Site.Params.keywords ", " }}">
+    {{ end }}
+    
+    {{/* Author */}}
+    <meta name="author" content="{{ .Site.Params.company }}">
+    
+    {{/* Geographic Metadata */}}
+    <meta name="geo.region" content="{{ .Site.Params.address.region }}">
+    <meta name="geo.placename" content="{{ .Site.Params.address.city }}">
+    <meta name="geo.position" content="{{ .Site.Params.address.latitude }};{{ .Site.Params.address.longitude }}">
+    <meta name="ICBM" content="{{ .Site.Params.address.latitude }}, {{ .Site.Params.address.longitude }}">
+    
+    {{/* Language */}}
+    <meta http-equiv="content-language" content="{{ .Site.LanguageCode }}">
+    
+    {{/* Canonical URL */}}
+    <link rel="canonical" href="{{ .Permalink }}">
+    
+    {{/* Open Graph / Facebook */}}
+    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}">
+    <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+    <meta property="og:locale" content="en_GB">
+    {{ if .Site.Params.logo }}
+        <meta property="og:image" content="{{ printf "%s/%s" .Site.BaseURL .Site.Params.logo | absURL }}">
+        <meta property="og:image:alt" content="{{ .Site.Title }} Logo">
+    {{ end }}
+    
+    {{/* Twitter Card */}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}">
+    <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    {{ if .Site.Params.logo }}
+        <meta name="twitter:image" content="{{ printf "%s/%s" .Site.BaseURL .Site.Params.logo | absURL }}">
+        <meta name="twitter:image:alt" content="{{ .Site.Title }} Logo">
+    {{ end }}
+    
+    {{/* Robots */}}
+    <meta name="robots" content="index, follow">
+    
+    {{/* Preconnect for performance */}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    {{/* Fonts */}}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    {{/* Stylesheet */}}
+    <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
+    
+    {{/* Google Tag Manager */}}
+    {{ if .Site.Params.google_tag_manager }}
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','{{ .Site.Params.google_tag_manager }}');</script>
+    <!-- End Google Tag Manager -->
+    {{ end }}
+    
+    {{/* Structured Data (JSON-LD) */}}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "{{ .Site.Params.company }}",
+        "alternateName": "{{ .Site.Title }}",
+        "url": "{{ .Site.BaseURL }}",
+        "logo": "{{ printf "%s/%s" .Site.BaseURL .Site.Params.logo | absURL }}",
+        "description": "{{ .Site.Params.description }}",
+        "foundingDate": "{{ .Site.Params.founded }}",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ .Site.Params.address.street }}",
+            "addressLocality": "{{ .Site.Params.address.city }}",
+            "postalCode": "{{ .Site.Params.address.postal_code }}",
+            "addressCountry": "{{ .Site.Params.address.country_code }}"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": {{ .Site.Params.address.latitude }},
+            "longitude": {{ .Site.Params.address.longitude }}
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "{{ .Site.Params.email }}",
+            "contactType": "Customer Service"
+        },
+        "sameAs": [
+            {{- if .Site.Params.linkedin -}}
+            "{{ .Site.Params.linkedin }}"
+            {{- end -}}
+            {{- if and .Site.Params.linkedin .Site.Params.weltix_url -}},{{- end -}}
+            {{- if .Site.Params.weltix_url -}}
+            "{{ .Site.Params.weltix_url }}"
+            {{- end -}}
+        ]
+    }
+    </script>
+</head>
+

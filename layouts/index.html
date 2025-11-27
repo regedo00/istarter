@@ -1,0 +1,55 @@
+{{ define "main" }}
+    <section class="fade-in">
+        <h2 style="margin-bottom: 2rem;">Strategic Financial Advisory for <span class="highlight">Tech Companies</span></h2>
+        <p>We support <b>tech companies</b> and <b>financial intermediaries</b> with deal structuring and capital raising, backed by strong experience in managing <b>syndicates</b> and investment deals with <b>HNWIs</b> through <b>club deals</b> and <b>public placements</b>.</p>
+        <p class="group-info"><i>iStarter is company of <a href="{{ .Site.Params.weltix_url }}" target="_blank">Weltix Group</a></i></p>
+    </section>
+
+    <section class="fade-in">
+        <h3>Our services for Ambitous Entrepreneurs and investors</h3>
+        <ul class="services">
+            <li>
+                <span class="service-title">Strategic Financial Advisory</span>
+                <span class="service-desc">Growth strategy, market positioning, and business development guidance for tech ventures.</span>
+            </li>
+            <li>
+                <span class="service-title">Syndicate bulding</span>
+                <span class="service-desc">Building and managing syndicates for venture capital, growth equity, and debt financing for technology companies at every stage.</span>
+            </li>
+            <li>
+                <span class="service-title">Secondary Transactions</span>
+                <span class="service-desc">Strategic sell-side and buy-side advisory for tech sector acquisitions and mergers.</span>
+            </li>
+            <li>
+                <span class="service-title">Investor Relations</span>
+                <span class="service-desc">Ongoing stakeholder management and strategic communication with investors and partners.</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="fade-in">
+        <h3>Track Record</h3>
+        <div class="track-record">
+            <div class="track-item">
+                <span class="track-value">€<span class="number" data-target="100">0</span>M+</span>
+                <span class="track-label">Capital Raised</span>
+                <div class="track-bar"></div>
+            </div>
+            <div class="track-item">
+                <span class="track-value"><span class="number" data-target="45">0</span>+</span>
+                <span class="track-label">Transactions</span>
+                <div class="track-bar"></div>
+            </div>
+            <div class="track-item">
+                <span class="track-value"><span class="number" data-target="7">0</span></span>
+                <span class="track-label">Geographies</span>
+                <div class="track-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="fade-in">
+        <p>For advisory inquiries and partnerships:<br><a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a></p>
+    </section>
+{{ end }}
+

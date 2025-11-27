@@ -1,0 +1,56 @@
+baseURL: 'https://istarter.co.uk'
+languageCode: 'en-us'
+title: 'iStarter - Strategic Financial Advisory'
+
+# Site parameters
+params:
+  description: 'Strategic Financial Advisory for Tech Companies'
+  logo: 'istarter_new.png'
+  email: 'contact@istarter.com'
+  company: 'iStarter UK Limited'
+  founded: 2015
+  industry: 'Financial Services'
+  address:
+    office: 'London Office'
+    street: '10-15 Queen Street, Aldermary House'
+    city: 'London'
+    postal_code: 'EC4N 1TX'
+    country: 'United Kingdom'
+    country_code: 'GB'
+    region: 'GB-LND'
+    region_name: 'London'
+    latitude: 51.5120
+    longitude: -0.0900
+  weltix_url: 'https://weltix.tech'
+  linkedin: 'https://www.linkedin.com/company/istarter/'  
+  keywords:
+    - 'financial advisory'
+    - 'tech companies'
+    - 'venture capital'
+    - 'syndicate building'
+    - 'strategic financial advisory'
+    - 'capital raising'
+    - 'investment advisory'
+    - 'tech sector financing'
+    - 'HNWI investments'
+    - 'club deals'
+    - 'secondary transactions'
+    - 'investor relations'
+  google_tag_manager: 'GTM-XXXXXXX'  # Replace with actual GTM ID
+
+# Menu configuration
+menu:
+  main:
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 1
+    - identifier: services
+      name: Services
+      url: /services/
+      weight: 2
+    - identifier: contact
+      name: Contacts
+      url: /#contact
+      weight: 3
+
